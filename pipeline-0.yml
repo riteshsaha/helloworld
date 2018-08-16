@@ -1,0 +1,14 @@
+---
+resources:
+- name: helloworld
+  type: git
+  source:
+    uri:    https://github.com/riteshsaha/helloworld.git
+    branch: master
+
+jobs:
+- name: unit-test
+  public: true
+  plan:
+  - get: helloworld
+    trigger: true
