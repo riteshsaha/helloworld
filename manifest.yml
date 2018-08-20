@@ -6,5 +6,5 @@ applications:
   host: helloworld-service
   timeout: 600
   domains: 
-  - apps.wdc-np.itcna.vmware.com a
+  - apps.wdc-np.itcna.vmware.com
   path: /target/helloworld-0.0.1-SNAPSHOT.jar
