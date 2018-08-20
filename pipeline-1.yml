@@ -1,0 +1,74 @@
+---
+resources:
+- name: helloworld
+  type: git
+  source:
+    uri:    https://github.com/riteshsaha/helloworld.git
+    branch: master
+
+- name: resource-deploy-app
+  type: cf
+  source:
+    api:  https://api.sys.wdc-np.itcna.vmware.com
+    username: saharitesh
+    password: ******
+    organization: Devportal
+    space: dev
+    skip_cert_check: false
+
+- name: non-prod-artifactory
+  type: artifactory
+  source:
+    endpoint: https://artfact-prd.vmware.com/artifactory
+    repository: /csl-dev/((app-unit-name))/((build-id))
+    regex: "((app-unit-name))-(?<version>.*).jar"
+    username: carousel
+    password: carousel123
+    skip_ssl_verification: true
+
+jobs:
+- name: unit-test
+  public: true
+  plan:
+  - get: helloworld
+    trigger: true
+
+- name: run-helloworld-app
+  public: true
+  plan:
+  - get: helloworld
+    passed: [unit-test]
+    trigger: true
+  - task: helloworld-task
+    config:
+        platform: linux
+
+        image_resource:
+          type: docker-image
+          source: {repository: busybox}
+
+        run:
+          path: echo
+          args: [hello world]
+
+- name: job-deploy-app
+  public: true
+  serial: true
+  plan:
+  - get: helloworld
+  - task: build
+    file: helloworld/build.yml
+  - put: resource-deploy-app
+    params:
+      manifest: helloworld/manifest.yml
+
+- name: cf-pusher
+  serial: true
+  plan:
+  - get: non-prod-artifactory
+    passed: ['job-deploy-app']
+    trigger: true
+  - put: helloworld
+    params:
+      path: non-prod-artifactory/*.jar
+    trigger: true
