@@ -3,8 +3,17 @@ resources:
 - name: helloworld
   type: git
   source:
-    uri:    https://github.com/riteshsaha/helloworld.git
     branch: master
+    uri: https://github.com/riteshsaha/helloworld.git
+- name: cf-resource
+  type: cf
+  source:
+    api: https://api.sys.wdc-np.itcna.vmware.com
+    organization: Devportal
+    username: saharitesh@vmware.com
+    password: VmwareDTTL007*
+    skip_cert_check: true
+    space: dev
 
 jobs:
 - name: unit-test
@@ -12,8 +21,8 @@ jobs:
   plan:
   - get: helloworld
     trigger: true
-    
-- name: deploy
+
+- name: run-helloworld-app
   public: true
   plan:
   - get: helloworld
@@ -30,3 +39,14 @@ jobs:
         run:
           path: echo
           args: [hello world]
+
+- name: job-deploy-app
+  public: true
+  serial: true
+  plan:
+  - get: helloworld
+    passed: [run-helloworld-app]
+    trigger: true
+  - put: cf-resource
+    params:
+      manifest: helloworld/manifest.yml
