@@ -1,7 +1,7 @@
 ---
 applications:
 - name: HelloWorldService
-  memory: 1024MB
+  memory: 256MB
   instances: 1
   host: helloworld-service
   timeout: 600
