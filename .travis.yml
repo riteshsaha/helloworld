@@ -7,5 +7,5 @@ script:
 
 deploy:
   provider: heroku
-  api_key: $HEROKU_API_KEY
-  app: jblogger
+  api_key: 8bbeaaea-4779-42be-9793-aaf5dfebdc70
+  app: helloworld
