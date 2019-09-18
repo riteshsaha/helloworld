@@ -6,5 +6,5 @@ script:
 
 deploy:
   provider: heroku
-  api_key: 8bbeaaea-4779-42be-9793-aaf5dfebdc70
-  app: helloworld
+  api_key: 
+    secure: 8bbeaaea-4779-42be-9793-aaf5dfebdc70
