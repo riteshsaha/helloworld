@@ -1,9 +1,0 @@
----
-applications:
-- name: HelloWorldService
-  memory: 1024MB
-  instances: 1
-  host: helloworld-service
-  timeout: 600
-  domains: 
-  - apps.wdc-np.itcna.vmware.com
