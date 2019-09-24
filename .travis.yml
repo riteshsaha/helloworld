@@ -8,4 +8,4 @@ deploy:
   provider: heroku
   api_key: 
     secure: "aIff+m393tOPoC6JUnS9pp/DwOV6ArezIsh7/sgdMnPZdgEnAmSgsLnVs6DUeBzPmZGt3uVHHiZK454QTxKyxp01lSoWE5vWlcbNZAx66JalqtI/clzzn6FySx7FfOQqy+1vbaqCc96ZzP8z2uHUmFaIQfOvw4svpwNEXyfAUxN9WU38CUl8U70NY+333Kngt6F2ffkqqjgZ+n5v9WvD3BM1d4l7mik9FqtlykuwNxOITHFGbj+FKWkR18vheCuwTS+ukawpV3Qj+nP39Aq/d11XXmalzwBAT4Cr4cRdsHJp/eiSW1YFS5yZaXdPE18sMmBTigJCuxyuH3noF7+/eem/4mUn8x9cIARmbiSnYh3KC50yE2en0kE2KPtCTBOU1duB10hCIiSXRVXhPI3PwKP0KBc2Mmf53OrpYSEw5M3/Cz4oWB3bpxJG4VN1VMkFG/ycOQThvxiVq47PzBFYigeoSqexbkD7AwtpOJ2unRf6q18Jj+Nfwqm/E+0hXOosE1pUQmP6vLwBV17F4D/C+8jQ0awEPL2nqv63zTOOf5VDgurXnpS/q3mMozdtm4pmtWmW6mScWfKX45EYxWT34R0+ccGK+UThUArPNeq6bi/jXKrSYyTpD8LeFLO0pE88OpHeZtxEqSlmurwwxWjTC+h82V0rmVF5qmioH+gaNRw="
-  app: hello-world-app-tests-1
+  app: hello-world-app-tests
